@@ -1,3 +1,30 @@
+# RED · Web de conexión para GitHub Pages
+
+La versión principal está en `docs/`: una web estática, sin agente y sin instalación en Windows. Dirección prevista: **https://jara-cyber.github.io/red/**.
+
+## Activar GitHub Pages
+
+En el repositorio, abre **Settings → Pages → Build and deployment**. Selecciona **Deploy from a branch**, rama **main**, carpeta **/docs**, y pulsa **Save**. Si tu plan no admite Pages en repositorios privados, GitHub pedirá cambiar de plan o hacer público el repositorio. Este proyecto no cambia su visibilidad automáticamente.
+
+La configuración de Pages es necesaria antes de que la dirección esté disponible. Puede tardar unos minutos tras activarla.
+
+## Qué hace esta web
+
+- Muestra estado declarado por el navegador, HTTPS, zona horaria y datos de Network Information API si el navegador los admite. En Safari/iPhone muchos campos no están disponibles y así se indica.
+- El botón Comprobar conexión realiza tres solicitudes sin caché a `probe.txt` en el mismo sitio y muestra su mediana. Mide respuesta HTTP, no ping ICMP, latencia al router ni velocidad contratada.
+- El botón Consultar IP y proveedor hace una petición explícita a `https://ipapi.co/json/`. Ese servicio recibe la IP del visitante; puede limitar o bloquear peticiones. La consulta no se hace automáticamente y los resultados solo se mantienen en memoria. La ubicación es aproximada y puede reflejar una VPN o relay.
+- IP local, gateway, DNS y dispositivos aparecen como no disponibles. No se intenta escanear la LAN.
+- El inventario de ejemplo es opcional y está marcado como ficticio. No se mezcla con los resultados reales.
+- Tiene manifiesto e iconos para añadirla al inicio. No ofrece vigilancia en segundo plano ni notificaciones de nuevas conexiones. No guarda inventarios, claves ni datos de red en GitHub.
+
+Todos los recursos usan rutas relativas y el service worker se limita a `/red/`, para no interferir con otros proyectos como `/casa/`. No hay dependencias ni compilación. Para probar localmente, sirve `docs/` con un servidor estático.
+
+---
+
+## Versión anterior: agente Windows (opcional, fuera de la web publicada)
+
+Los archivos `agent.py`, `web/`, `Iniciar.ps1` y `tests/` se conservan como versión anterior. No se publican al seleccionar `/docs` en Pages. Sus instrucciones siguen debajo; **no son necesarias para la nueva web**.
+
 # RED · Observatorio de red
 
 Panel privado en español y agente para Windows 10/11. Muestra la IP del **Windows que ejecuta el agente**, interfaz, subred IPv4, puerta de enlace, DNS, dispositivos observados por IP/MAC e historial de primeras detecciones. No inventa dispositivos ni muestra datos de demostración como si fueran reales.
