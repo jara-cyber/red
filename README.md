@@ -24,3 +24,12 @@ GitHub → Settings → Pages → Deploy from a branch → `main` → `/docs` �
 `node --test tests/analyzer.test.cjs` verifica estadísticas, subredes y exportación CSV. La disponibilidad de campos del navegador depende de cada plataforma; en Safari/iPhone algunos aparecerán como no disponibles. No se usan librerías externas para las gráficas ni dependencias de compilación.
 
 Los archivos del agente Windows anterior (`agent.py`, `web/`, `Iniciar.ps1`) siguen en el repositorio pero no se publican al seleccionar `/docs`. No son necesarios para esta versión web.
+
+
+## Análisis de mediciones wifi aportadas
+
+La nueva sección permite introducir o importar redes por CSV (SSID, BSSID opcional, banda 2.4/5, canal, RSSI y seguridad). Ofrece tabla filtrable y ordenable, gráficos esquemáticos de 20 MHz, comparación de solapamientos de los canales 1/6/11 y exportación CSV. Todo queda en memoria de la sesión salvo que lo exportes; no hay detección wifi, análisis espectral ni recomendación automática. El canal primario y un ancho supuesto de 20 MHz no describen redes anchas. Los canales admitidos por el formulario no implican autorización regulatoria para usarlos.
+
+Para la importación usa las unidades exactas: RSSI en dBm, banda 2.4 o 5. No conviertas porcentajes de señal en dBm sin una medición válida. Las redes abiertas son etiquetas aportadas, no una auditoría automática. Las filas se validan antes de añadirlas; límite de 100 registros y 100 KB.
+
+Pruebas adicionales: `node --test tests/wireless.test.cjs`.

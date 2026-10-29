@@ -18,7 +18,7 @@ function subnet(text){
  first:format(prefix>=31?network:network+1),last:format(prefix>=31?last:last-1),hosts:prefix>=31?size:size-2};
 }
 function csv(rows){return '\uFEFF'+rows.map(row=>row.map(value=>{
- let text=String(value??'');if(/^[=+@\-\t\r]/.test(text))text="'"+text;
+ let text=String(value??'');if(typeof value!=='number' && /^[=+@\-\t\r]/.test(text))text="'"+text;
  return '"'+text.replace(/"/g,'""')+'"';}).join(',')).join('\r\n');}
 const api={stats,subnet,csv}; if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.REDUtils=api;
 })(typeof window==='undefined'?globalThis:window);
