@@ -33,3 +33,8 @@ La nueva sección permite introducir o importar redes por CSV (SSID, BSSID opcio
 Para la importación usa las unidades exactas: RSSI en dBm, banda 2.4 o 5. No conviertas porcentajes de señal en dBm sin una medición válida. Las redes abiertas son etiquetas aportadas, no una auditoría automática. Las filas se validan antes de añadirlas; límite de 100 registros y 100 KB.
 
 Pruebas adicionales: `node --test tests/wireless.test.cjs`.
+
+
+## Aplicación nativa para iPhone
+
+El proyecto SwiftUI está en [native-ios/](native-ios/README.md). Incluye IP locales del iPhone, estado de la ruta, diagnóstico HTTPS y descubrimiento de servicios Bonjour con permiso. Requiere compilar y firmar con Xcode en un Mac para instalarlo; no se instala desde GitHub Pages. La compilación iOS y prueba en dispositivo siguen pendientes. Consulta la guía para sus capacidades y límites.
