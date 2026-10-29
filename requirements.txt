@@ -1,0 +1,3 @@
+# Only required for Web Push. The local panel and network agent use Python's stdlib.
+pywebpush>=2.0,<3
+cryptography>=44,<48
